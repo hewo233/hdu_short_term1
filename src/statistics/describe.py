@@ -5,26 +5,22 @@ def describe_data(name, data):
     total_rides = len(data)
     average_duration = data['ride_duration'].mean()
     std_duration = data['ride_duration'].std()
-    max_duration = data['ride_duration'].max()
-    min_duration = data['ride_duration'].min()
     member_rides = data[data['member_casual'] == 'member'].shape[0]
     casual_rides = data[data['member_casual'] == 'casual'].shape[0]
 
-    print(f'{name} 数据可视化')
+    # print(f'{name} 数据可视化')
 
-    # 会员与非会员骑行次数对比
-    plot_membership_type_rides(name, data)
+    # # 会员与非会员骑行次数对比
+    # plot_membership_type_rides(name, data)
 
-    # 骑行时间分布
-    plot_duration(name, data)
+    # # 骑行时间分布
+    # plot_duration(name, data)
 
     # 返回结果
     return {
         'Total Rides': total_rides,
         'Average Duration (min)': average_duration,
         'Duration Std Dev (min)': std_duration,
-        'Max Duration (min)': max_duration,
-        'Min Duration (min)': min_duration,
         'Member Rides': member_rides,
         'Casual Rides': casual_rides
     }
