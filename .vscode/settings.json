@@ -1,6 +1,7 @@
 {
     "python.analysis.extraPaths": [
         "./src/data_prepare",
-        "./src/statistics"
+        "./src/statistics",
+        "./src/data_mining"
     ]
 }
