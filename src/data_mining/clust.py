@@ -19,6 +19,8 @@ def cluster_geo_locations(data, n_clusters=5):
     kmeans_end = KMeans(n_clusters=n_clusters, random_state=0)
     data['end_geo_cluster'] = kmeans_end.fit_predict(scaled_end_coords)
 
-    return data, kmeans_start.cluster_centers_, kmeans_end.cluster_centers_
+    original_start_centers = scaler_start.inverse_transform(kmeans_start.cluster_centers_, scaler_start)
+    original_end_centers = scaler_end.inverse_transform(kmeans_end.cluster_centers_, scaler_end)
 
+    return data, original_start_centers, original_end_centers
 

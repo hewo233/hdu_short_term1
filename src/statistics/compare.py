@@ -20,7 +20,7 @@ def compare_and_visualize_stats(data1, data2):
     for ax, label, data1_val, data2_val in zip(axes, chinese_labels, data1_values, data2_values):
         
         x = np.arange(1)  # 只有一组数据
-        width = 0.35  # 条形的宽度
+        width = 0.1  # 条形的宽度
 
         rects1 = ax.bar(x - width/2, data1_val, width, label='2020', color='blue')
         rects2 = ax.bar(x + width/2, data2_val, width, label='2021', color='green')

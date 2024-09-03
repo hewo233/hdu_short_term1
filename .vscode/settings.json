@@ -2,6 +2,7 @@
     "python.analysis.extraPaths": [
         "./src/data_prepare",
         "./src/statistics",
-        "./src/data_mining"
+        "./src/data_mining",
+        "./src/common"
     ]
 }

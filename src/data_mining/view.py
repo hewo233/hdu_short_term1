@@ -24,23 +24,54 @@ def visualize_start_end_points(data):
         folium.Marker(
             location=[row['start_lat'], row['start_lng']],
             icon=folium.Icon(color='green', icon='play'),
-            popup='Start Point'
+            popup='起始点' + str(idx)
         ).add_to(start_marker_cluster)
+
+    print('start finish')
 
     # 在地图上添加终点标记
     for idx, row in data.iterrows():
         folium.Marker(
             location=[row['end_lat'], row['end_lng']],
             icon=folium.Icon(color='red', icon='stop'),
-            popup='End Point'
+            popup='终点' + str(idx)
         ).add_to(end_marker_cluster)
+
+    print('end finish')
 
     # 添加图层控制器
     folium.LayerControl().add_to(map)
 
     return map
 
-# 使用示例
-# data = pd.read_csv("your_data.csv")
-# map = visualize_start_end_points(data)
-# map.save('NYC_Bike_Rides.html')  # 保存到HTML文件，可以用浏览器打开查看
+def visualize_cluster_centers(start_centers, end_centers):
+    """
+    Visualize cluster centers for start and end points on a map using Folium.
+
+    Args:
+    start_centers (array): Array of start cluster centers from KMeans.
+    end_centers (array): Array of end cluster centers from KMeans.
+
+    Returns:
+    Folium Map: A map with cluster centers plotted.
+    """
+    map = folium.Map(location=[40.7128, -74.0060], zoom_start=12)
+
+    # 添加起点聚类中心
+    for center in start_centers:
+        folium.Marker(
+            location=[center[0], center[1]],
+            icon=folium.Icon(color='green', icon='info-sign'),
+            popup='Start Center'
+        ).add_to(map)
+
+    # 添加终点聚类中心
+    for center in end_centers:
+        folium.Marker(
+            location=[center[0], center[1]],
+            icon=folium.Icon(color='red', icon='info-sign'),
+            popup='End Center'
+        ).add_to(map)
+
+    return map
+
