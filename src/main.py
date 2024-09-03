@@ -15,5 +15,5 @@ data_2021 = load_csv_data('data/final/2021.csv')
 
 data_2020_clustered, start_centers_2020, end_centers_2020 = cluster_geo_locations(data_2020)
 
-map_2020 = visualize_clusters_on_map(data_2020_clustered, start_centers_2020, end_centers_2020)
-map_2020.save('result/html/map_2020.html')
+map_2020 = visualize_clusters_on_map(data_2020)
+map_2020.save('results/html/2020.html')
