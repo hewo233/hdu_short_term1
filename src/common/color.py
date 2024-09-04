@@ -1,14 +1,14 @@
+import matplotlib.colors as mcolors
 import matplotlib.cm as cm
-import matplotlib.colors as colors
 
-def get_color(total_count, max_count):
+def get_color(count, max_count):
     """
-    获取一个颜色值，用于表示站点的使用频率。
+    根据使用频率计算颜色。
+
     """
-    # Normalize the count
-    norm = colors.Normalize(vmin=0, vmax=max_count)
-    # Choose a colormap
-    cmap = cm.get_cmap('YlOrRd')  # Yellow to Orange to Red
-    # Get color from colormap
-    rgb = cmap(norm(total_count))[:3]  # Get RGB
-    return colors.rgb2hex(rgb)
+
+    cmap = mcolors.LinearSegmentedColormap.from_list("custom_lime_red", ["#00FF00", "#FF0000"], N=256)
+    norm = mcolors.Normalize(vmin=0, vmax=max_count)
+
+    rgb = cmap(norm(count))
+    return mcolors.rgb2hex(rgb)

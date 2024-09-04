@@ -75,3 +75,30 @@ def visualize_cluster_centers(start_centers, end_centers):
 
     return map
 
+
+import matplotlib.pyplot as plt
+
+
+def plot_duration_clusters(data, centers, name):
+    """
+    可视化骑行持续时间的聚类结果。
+    """
+    plt.figure(figsize=(10, 6))
+    max_duration = 60 
+    bins = range(0, int(max_duration + 1), 2)  
+
+    for cluster in sorted(data['duration_cluster'].unique()):
+        cluster_data = data.loc[data['duration_cluster'] == cluster, 'ride_duration']
+        plt.hist(cluster_data, bins=bins, alpha=0.4)
+
+    for center in sorted(centers):
+        if center < max_duration: 
+            plt.axvline(x=center, color='r', linestyle='dashed', linewidth=2, label=f'Center at {center[0]:.2f} min')
+    
+    plt.title(f'{name} 的骑行时间')
+    plt.xlabel('时间 (min)')
+    plt.ylabel('骑行次数')
+    plt.legend()
+    plt.xlim(0, max_duration)
+    plt.grid(True)
+    plt.savefig(f'result/photos/{name}_duration_clusters.png')

@@ -2,14 +2,7 @@ import pandas as pd
 
 def calculate_station_usage(data):
     """
-    Calculate the usage frequency for start and end stations, including their locations.
-    This function ensures latitude and longitude are correctly retained in the output.
-
-    Args:
-    data (DataFrame): The DataFrame containing bike ride data.
-
-    Returns:
-    DataFrame: A DataFrame with station names, total usage counts, and their coordinates.
+    计算站点的使用频率
     """
     # 准备起点和终点数据，统计次数，计算经纬度
     start_data = data[['start_station_name', 'start_lat', 'start_lng']]
@@ -59,14 +52,7 @@ from color import get_color
 
 def visualize_top_stations(data, top_n=50):
     """
-    Visualize the top N most used bike stations on a map using Folium.
-
-    Args:
-    data (DataFrame): The DataFrame containing bike ride data.
-    top_n (int): The number of top stations to display.
-
-    Returns:
-    Folium Map: A map with the top N stations plotted.
+    在地图上可视化使用频率最高的站点
     """
     # 计算站点使用频率，包括地理位置
     station_usage = calculate_station_usage(data)
