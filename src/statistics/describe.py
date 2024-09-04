@@ -45,7 +45,7 @@ def plot_membership_type_rides(name, data):       # 会员与非会员骑行次�
     member_counts = data['member_casual'].value_counts()
 
     plt.figure(figsize=(8, 5))
-    member_counts.plot(kind='bar', color=['blue', 'green'])
+    member_counts.plot(kind='bar', color=['blue', 'green'],width=0.3)
     plt.title('会员与非会员骑行次数对比')
     plt.xlabel('会员类型')
     plt.ylabel('骑行次数')
